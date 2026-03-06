@@ -157,7 +157,8 @@ where
                         n_splits += 1;
                     } else if matches!(status, CavityCheckStatus::Invalid) && tag.0 < E::DIM as Dim
                     {
-                        if cavity.elems.len() == 1 {
+                        if cavity.elems.len() == 1 && E::DIM == 3 {
+                            // We deactivate this in 2D because not robust!
                             // If the cavity contains one element with two (1 in 2D) tagged faces with the same tag
                             // then we remove the element from the mesh
 
